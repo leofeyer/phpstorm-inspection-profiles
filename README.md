@@ -1,7 +1,7 @@
 # PhpStorm Inspection Profiles
 
-This package includes PhpStorm inspection profiles for Contao 3 and 4 as well
-as one general profile. All profiles assume that the [EA Extended][1] plugin is
+This package includes a PhpStorm inspection profile for Contao as well as a
+general one. Both profiles assume that the [EA Extended][1] plugin is
 installed.
 
 ## Installation
@@ -16,97 +16,121 @@ The following adjustments have been made compared to the default scheme:
 
 ### General
 
-**composer.json**
+**Do not warn if the addition operator is used on arrays**
+ 
+Using the addition operator is a good way to add not configured default options
+to an array, therefore do not warn if the operator is used.
 
- * Do not warn about not installed packages
+**Report if `compact()` can be used**
 
-**HTML**
+Using `compact()` can improve the readability of the code, therefore report if
+it can be used.
 
- * Disable completely
+**phpDoc comments**
 
-**JSON and JSON5**
+Duplicating meta information in both type hints and phpDoc comments will lead
+to inconsistent data, therefore only document what is not already in the method
+signature.
 
- * Do not warn if not compliant with JSON schema
+Code snippet with duplicate meta data:
 
-**PHP**
+```php
+class Foo
+{
+    /**
+     * Description of what the method does.
+     * 
+     * @param string $str
+     * @param int    $int
+     * @param bool   $bool
+     *
+     * @return array
+     */
+    public method bar(string $str, int $int, bool $bool): array
+    {
+    }
+}
+```
 
- * Warn about case mismatch in method call or class usage
- * Do not warn about redundant catch clauses
- * Do not warn about unhandled exception
- * Do not warn if a class overrides a field of its parent class
- * Report if `compact()` can be used
- * Do not warn if the addition operator is used on arrays
- * Do not warn if the security advisories package is missing
+Code snippet without duplicate meta data:
+
+```php
+class Foo
+{
+    /**
+     * Description of what the method does.
+     */
+    public method bar(string $str, int $int, bool $bool): array
+    {
+    }
+}
+```
+
+To keep PhpStorm from warning us about the missing phpDoc tags, the following
+rules have been adjusted:
+
  * Do not warn about missing `@return` tags
  * Do not warn about missing `@throws` tags
  * Do not warn if a PHPDoc comment does not match the function/method signature
- * Do not warn about multiple class declarations
 
-**RELAX NG**
+**Exception handling**
+ 
+The exception checks in PhpStorm generate a lot of false-positives if not all
+`@throws` tags are set correctly (and recursively!), therefore:
 
- * Disable completely
+ * Do not warn about unhandled exception
+ * Do not warn about redundant catch clauses
 
-**Spelling**
+**Warn about case mismatch in method call or class usage**
 
- * Disable completely
+Even though method calls are case-insensitive in PHP, it seems a good practice
+to use the correct case.
 
-**XML**
+**Do not warn if the security advisories package is missing**
 
- * Do not warn about unbound XML namespace prefixes
+Even though the security advisories package is a good thing, it is not always
+necessary to add it to your `composer.json` file (e.g. if you maintain your own
+security meta package or if you use the [Symfony Security Checker][2] instead),
+therefore do not warn if it is not present.
 
-### Contao 4
+**Do not warn if `strtr()` could be replaced with `str_replace()`**
 
-Everything from the General profile plus:
+Using `str_replace()` is not much different from using `strtr()` in terms of
+code readability, therefore do not suggest to replace it.
 
-**PHP**
+### Contao
 
- * Do not warn if a callable parameter usage violates its definition
- * Do not warn about long inheritance chains
- * Do not warn if there are constants without access modifier
- * Do not warn about static method invocation via `->`
- * Do not warn if a general `\Exception` is thrown
- * Do not warn if `strtr()` could be replaced with `str_replace()`
- * Do not warn about unsupported string offset operations
- * Do not warn about `strlen()` being misused
- * Do not warn about forgotten debug statements
- * Do not warn about undefined fields
- * Do not warn about unused parameters
+The Contao profile includes everything from the General profile plus:
 
-### Contao 3
+**Do not warn about undefined fields**
 
-Everything from the Contao 4 profile plus:
+Contao models use `@property` tags to define the fields which are accessible
+through magic methods. However, since models can be extended and there is no
+way to add `@property` tags on the fly, a lot of false-positive warnings about
+undefined fields will be generated. 
 
-**CSS**
+**Do not warn about unused parameters**
 
- * Disable completely
+Sometimes using an interface or a hook requires a certain method signature,
+even though not all arguments are used in the method body, therefore disable
+the check.
 
-**General**
+**Do not warn about static method invocation via `->`**
 
- * Disable annotators
+Contao uses adapters to allow unit-testing methods of the old Contao 3
+framework. Since most of these methods are static but are not invoked
+statically through the adapter, disable this check.
 
-**PHP**
+**Do not warn about unsupported string offset operations**
 
- * Do not warn if the declaration access can be weaker
- * Do not warn about missing or empty conditionals group statements
- * Do not warn about nested positive ifs
- * Do not warn about unnecessary double quotes
- * Do not warn about unnecessary parentheses
- * Do not warn about nested ternary operators
- * Do not warn if `isset()` constructs can be merged
- * Do not warn about non-optimal if conditions
- * Do not warn about redundant `else` keywords
- * Do not warn if `unset()` constructs can be merged
- * Do not warn if the `::class` constant can be used
- * Do not warn if a return type hint can be used
- * Do not warn if the short list syntax can be used
- * Do not warn about non-optimal regular expressions
- * Do not warn about class autoloading correctness
- * Do not warn about the magic methods validity
- * Do not warn about improper `preg_quote()` usage
- * Do not warn about type unsafe usages of `in_array()` and `array_search()`
- * Do not warn if a parameter could be declared as array
- * Do not warn about type unsafe comparisons
- * Do not warn about missing `break` statement
- * Do not warn about missing parent calls in constructors
+PhpStorm generates a lot of false-positive warnings about unsupported string
+offset operations when working with the globals array like this:
+
+```php
+$GLOBALS['TL_LANG']['MSC']['articlePicker'] = 'Article picker';
+```
+
+Therefore disable this check.
 
 [1]: https://plugins.jetbrains.com/plugin/7622-php-inspections-ea-extended-
+[2]: https://security.symfony.com
