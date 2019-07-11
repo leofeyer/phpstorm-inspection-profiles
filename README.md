@@ -95,8 +95,20 @@ therefore do not warn if it is not present.
 
 **Do not warn if `strtr()` could be replaced with `str_replace()`**
 
-Using `str_replace()` is not much different from using `strtr()` in terms of
-code readability, therefore do not suggest to replace it.
+After the PHP `strtr()` implementation [has been reworked][3] in 2013, it is
+more effective than `str_replace()` when replacing single characters. Therefore
+do not suggest to replace it.
+
+**Binary-unsafe `fopen()` usage**
+
+Contemporary systems do not require the b-modifier for compatibility anymore,
+therefore do not promote its usage.
+
+**Senseless method duplication**
+
+Up to at least version v3.0.14 of the EA Extended plugin, the senseless method
+duplication inspection generates [false positives][4]. It is therefore disabled
+by default until the issue has been resolved.
 
 ### Contao
 
@@ -134,3 +146,5 @@ Therefore disable this check.
 
 [1]: https://plugins.jetbrains.com/plugin/7622-php-inspections-ea-extended-
 [2]: https://security.symfony.com
+[3]: https://news-web.php.net/php.internals/64931
+[4]: https://github.com/kalessil/phpinspectionsea/issues/1363
