@@ -22,6 +22,5 @@
   </inspection_tool>
   <inspection_tool class="SecurityAdvisoriesInspection" enabled="false" level="WARNING" enabled_by_default="false" />
   <inspection_tool class="SpellCheckingInspection" enabled="false" level="TYPO" enabled_by_default="false" />
-  <inspection_tool class="SenselessMethodDuplicationInspection" enabled="false" level="WEAK WARNING" enabled_by_default="false" />
   <inspection_tool class="StrTrUsageAsStrReplaceInspection" enabled="false" level="WEAK WARNING" enabled_by_default="false" />
 </profile>

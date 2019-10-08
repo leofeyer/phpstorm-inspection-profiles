@@ -104,12 +104,6 @@ do not suggest to replace it.
 Contemporary systems do not require the b-modifier for compatibility anymore,
 therefore do not promote its usage.
 
-**Senseless method duplication**
-
-Up to at least version v3.0.14 of the EA Extended plugin, the senseless method
-duplication inspection generates [false positives][4]. It is therefore disabled
-by default until the issue has been resolved.
-
 ### Contao
 
 The Contao profile includes everything from the General profile plus:
@@ -147,4 +141,3 @@ Therefore disable this check.
 [1]: https://plugins.jetbrains.com/plugin/7622-php-inspections-ea-extended-
 [2]: https://security.symfony.com
 [3]: https://news-web.php.net/php.internals/64931
-[4]: https://github.com/kalessil/phpinspectionsea/issues/1363
