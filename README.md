@@ -96,8 +96,8 @@ therefore do not warn if it is not present.
 **Do not warn if `strtr()` could be replaced with `str_replace()`**
 
 After the PHP `strtr()` implementation [has been reworked][3] in 2013, it is
-more effective than `str_replace()` when replacing single characters. Therefore
-do not suggest to replace it.
+more effective than `str_replace()` when replacing single characters.
+Therefore, do not suggest replacing it.
 
 **Binary-unsafe `fopen()` usage**
 
@@ -136,7 +136,7 @@ offset operations when working with the globals array like this:
 $GLOBALS['TL_LANG']['MSC']['articlePicker'] = 'Article picker';
 ```
 
-Therefore disable this check.
+Therefore, disable this check.
 
 [1]: https://plugins.jetbrains.com/plugin/7622-php-inspections-ea-extended-
 [2]: https://security.symfony.com
