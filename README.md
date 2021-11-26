@@ -66,20 +66,13 @@ class Foo
 }
 ```
 
-To keep PhpStorm from warning us about the missing phpDoc tags, the following
-rules have been adjusted:
+Therefore, do not warn if a PHPDoc comment does not match the function/method
+signature.
 
- * Do not warn about missing `@return` tags
- * Do not warn about missing `@throws` tags
- * Do not warn if a PHPDoc comment does not match the function/method signature
+**Binary-unsafe `fopen()` usage**
 
-**Exception handling**
- 
-The exception checks in PhpStorm generate a lot of false-positives if not all
-`@throws` tags are set correctly (and recursively!), therefore:
-
- * Do not warn about unhandled exception
- * Do not warn about redundant catch clauses
+Contemporary systems do not require the b-modifier for compatibility anymore,
+therefore do not promote its usage.
 
 **Warn about case mismatch in method call or class usage**
 
@@ -98,11 +91,6 @@ therefore do not warn if it is not present.
 After the PHP `strtr()` implementation [has been reworked][3] in 2013, it is
 more effective than `str_replace()` when replacing single characters.
 Therefore, do not suggest replacing it.
-
-**Binary-unsafe `fopen()` usage**
-
-Contemporary systems do not require the b-modifier for compatibility anymore,
-therefore do not promote its usage.
 
 ### Contao
 
