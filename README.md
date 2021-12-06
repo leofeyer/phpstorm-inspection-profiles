@@ -96,6 +96,11 @@ Therefore, do not suggest replacing it.
 
 The Contao profile includes everything from the General profile plus:
 
+**Exception handling**
+
+Since we have not agreed on a [concept][4] yet, the profile ignores missing
+`@throws` tags and unhandled exceptions for the time being.
+
 **Do not warn about undefined fields**
 
 Contao models use `@property` tags to define the fields which are accessible
@@ -129,3 +134,4 @@ Therefore, disable this check.
 [1]: https://plugins.jetbrains.com/plugin/7622-php-inspections-ea-extended-
 [2]: https://security.symfony.com
 [3]: https://news-web.php.net/php.internals/64931
+[4]: https://github.com/contao/contao/pull/3724
