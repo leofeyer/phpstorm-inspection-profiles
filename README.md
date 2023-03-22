@@ -1,8 +1,7 @@
-# PhpStorm Inspection Profiles
+# PhpStorm inspection profile for Contao
 
-This package includes a PhpStorm inspection profile for Contao as well as a
-general one. Both profiles assume that the [EA Extended][1] plugin is
-installed.
+This package includes a PhpStorm inspection profile for Contao. The profiles
+assume that the [EA Extended][1] plugin is installed.
 
 ## Installation
 
@@ -13,18 +12,6 @@ the profile drop-down and choose "Import Profile…".
 ## Adjustments
 
 The following adjustments have been made compared to the default scheme:
-
-### General
-
-**Do not warn if the addition operator is used on arrays**
- 
-Using the addition operator is a good way to add not configured default options
-to an array, therefore do not warn if the operator is used.
-
-**Report if `compact()` can be used**
-
-Using `compact()` can improve the readability of the code, therefore report if
-it can be used.
 
 **phpDoc comments**
 
@@ -92,14 +79,14 @@ After the PHP `strtr()` implementation [has been reworked][3] in 2013, it is
 more effective than `str_replace()` when replacing single characters.
 Therefore, do not suggest replacing it.
 
-### Contao
-
-The Contao profile includes everything from the General profile plus:
-
 **Exception handling**
 
-Since we have not agreed on a [concept][4] yet, the profile ignores missing
-`@throws` tags and unhandled exceptions for the time being.
+Contao does not add `@throws` annotations to every method that calls another
+method that calls another method that might throw an exception. Instead, it
+adds `@throws` to indicate that an exception should be handled in a try/catch
+block in contrast to letting it bubble up to the general exception handler.
+
+See [contao/contao#3816][4] for more information.
 
 **Do not warn about undefined fields**
 
@@ -134,4 +121,4 @@ Therefore, disable this check.
 [1]: https://plugins.jetbrains.com/plugin/7622-php-inspections-ea-extended-
 [2]: https://security.symfony.com
 [3]: https://news-web.php.net/php.internals/64931
-[4]: https://github.com/contao/contao/pull/3724
+[4]: https://github.com/contao/contao/pull/3816
