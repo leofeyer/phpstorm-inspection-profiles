@@ -1,7 +1,7 @@
 # PhpStorm inspection profile for Contao
 
 This package includes a PhpStorm inspection profile for Contao. The profiles
-assume that the [EA Extended][1] plugin is installed.
+assume that the [EA Extended][1] and [PHP Hammer][2] plugins are installed.
 
 ## Installation
 
@@ -70,12 +70,12 @@ to use the correct case.
 
 Even though the security advisories package is a good thing, it is not always
 necessary to add it to your `composer.json` file (e.g. if you maintain your own
-security meta package or if you use the [Symfony Security Checker][2] instead),
+security meta package or if you use the [Symfony Security Checker][3] instead),
 therefore do not warn if it is not present.
 
 **Do not warn if `strtr()` could be replaced with `str_replace()`**
 
-After the PHP `strtr()` implementation [has been reworked][3] in 2013, it is
+After the PHP `strtr()` implementation [has been reworked][4] in 2013, it is
 more effective than `str_replace()` when replacing single characters.
 Therefore, do not suggest replacing it.
 
@@ -86,7 +86,7 @@ method that calls another method that might throw an exception. Instead, it
 adds `@throws` to indicate that an exception should be handled in a try/catch
 block in contrast to letting it bubble up to the general exception handler.
 
-See [contao/contao#3816][4] for more information.
+See [contao/contao#3816][5] for more information.
 
 **Do not warn about undefined fields**
 
@@ -119,6 +119,7 @@ $GLOBALS['TL_LANG']['MSC']['articlePicker'] = 'Article picker';
 Therefore, disable this check.
 
 [1]: https://plugins.jetbrains.com/plugin/7622-php-inspections-ea-extended-
-[2]: https://security.symfony.com
-[3]: https://news-web.php.net/php.internals/64931
-[4]: https://github.com/contao/contao/pull/3816
+[2]: https://plugins.jetbrains.com/plugin/19515-php-hammer
+[3]: https://security.symfony.com
+[4]: https://news-web.php.net/php.internals/64931
+[5]: https://github.com/contao/contao/pull/3816

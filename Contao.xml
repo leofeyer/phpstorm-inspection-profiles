@@ -1,13 +1,22 @@
 <profile version="1.0">
   <option name="myName" value="Contao" />
   <inspection_tool class="CallableParameterUseCaseInTypeContextInspection" enabled="false" level="WARNING" enabled_by_default="false" />
+  <inspection_tool class="CompactReplacementInspection" enabled="false" level="WEAK WARNING" enabled_by_default="false" />
+  <inspection_tool class="ComparisonScalarOrderInspection" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+    <option name="comparisonScalarSide" value="LEFT" />
+  </inspection_tool>
   <inspection_tool class="DuplicatedCode" enabled="false" level="WEAK WARNING" enabled_by_default="false" />
   <inspection_tool class="FopenBinaryUnsafeUsageInspection" enabled="true" level="WARNING" enabled_by_default="true">
     <option name="ENFORCE_BINARY_MODIFIER_USAGE" value="false" />
   </inspection_tool>
   <inspection_tool class="ForgottenDebugOutputInspection" enabled="false" level="ERROR" enabled_by_default="false" />
+  <inspection_tool class="FunctionErrorSilencedInspection" enabled="false" level="WEAK WARNING" enabled_by_default="false" />
   <inspection_tool class="HttpUrlsUsage" enabled="false" level="WEAK WARNING" enabled_by_default="false" />
+  <inspection_tool class="IfSimplificationOrInspection" enabled="false" level="WEAK WARNING" enabled_by_default="false" />
+  <inspection_tool class="MissingParentCallInspection" enabled="false" level="WARNING" enabled_by_default="false" />
+  <inspection_tool class="NativeMemberUsageInspection" enabled="false" level="ERROR" enabled_by_default="false" />
   <inspection_tool class="NullPointerExceptionInspection" enabled="false" level="WARNING" enabled_by_default="false" />
+  <inspection_tool class="ParameterDefaultsNullInspection" enabled="false" level="WEAK WARNING" enabled_by_default="false" />
   <inspection_tool class="PhpDocMissingThrowsInspection" enabled="false" level="WEAK WARNING" enabled_by_default="false" />
   <inspection_tool class="PhpDocSignatureInspection" enabled="false" level="WEAK WARNING" enabled_by_default="false" />
   <inspection_tool class="PhpDocSignatureIsNotCompleteInspection" enabled="false" level="WEAK WARNING" enabled_by_default="false" />
@@ -29,7 +38,9 @@
   <inspection_tool class="ProperNullCoalescingOperatorUsageInspection" enabled="true" level="WEAK WARNING" enabled_by_default="true">
     <option name="ANALYZE_TYPES" value="false" />
   </inspection_tool>
+  <inspection_tool class="ReturnTernaryReplacementInspection" enabled="false" level="WEAK WARNING" enabled_by_default="false" />
   <inspection_tool class="SecurityAdvisoriesInspection" enabled="false" level="WARNING" enabled_by_default="false" />
+  <inspection_tool class="SenselessParentCallEmptyInspection" enabled="false" level="WEAK WARNING" enabled_by_default="false" />
   <inspection_tool class="SpellCheckingInspection" enabled="true" level="TYPO" enabled_by_default="true">
     <option name="processCode" value="false" />
     <option name="processLiterals" value="false" />
@@ -37,5 +48,9 @@
   </inspection_tool>
   <inspection_tool class="StaticInvocationViaThisInspection" enabled="false" level="WARNING" enabled_by_default="false" />
   <inspection_tool class="StrTrUsageAsStrReplaceInspection" enabled="false" level="WEAK WARNING" enabled_by_default="false" />
+  <inspection_tool class="StringCurlyInspection" enabled="false" level="WEAK WARNING" enabled_by_default="false" />
+  <inspection_tool class="UnaryOperatorFormatInspection" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+    <option name="unaryOperatorSide" value="LEFT" />
+  </inspection_tool>
   <inspection_tool class="UnsupportedStringOffsetOperationsInspection" enabled="false" level="ERROR" enabled_by_default="false" />
 </profile>
