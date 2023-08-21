@@ -14,7 +14,9 @@
   <inspection_tool class="HttpUrlsUsage" enabled="false" level="WEAK WARNING" enabled_by_default="false" />
   <inspection_tool class="IfSimplificationOrInspection" enabled="false" level="WEAK WARNING" enabled_by_default="false" />
   <inspection_tool class="MissingParentCallInspection" enabled="false" level="WARNING" enabled_by_default="false" />
-  <inspection_tool class="NativeMemberUsageInspection" enabled="false" level="ERROR" enabled_by_default="false" />
+  <inspection_tool class="NativeMemberUsageInspection" enabled="true" level="ERROR" enabled_by_default="true">
+    <option name="strictChecking" value="false" />
+  </inspection_tool>
   <inspection_tool class="NullPointerExceptionInspection" enabled="false" level="WARNING" enabled_by_default="false" />
   <inspection_tool class="ParameterDefaultsNullInspection" enabled="false" level="WEAK WARNING" enabled_by_default="false" />
   <inspection_tool class="PhpDocMissingThrowsInspection" enabled="false" level="WEAK WARNING" enabled_by_default="false" />
